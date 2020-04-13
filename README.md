@@ -1,6 +1,6 @@
 # xg-model
 
-!["/images/xG_plot2.png"]
+![](/images/xG_plot2.png)
 
 This repository contains all the necessary codes to ideally reproduce the data processing, analysis and visulization described in this article (), which is focused on how to fit a football xg model using #rstats and the public event dataset by Wyscout.
 
