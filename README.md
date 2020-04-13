@@ -13,7 +13,7 @@ Before to use these codes you have to get this list of required datasets:
 * events_Spain.json
 * players.json
 
-You can download them from this website: 
+You can download them from [this website] (https://figshare.com/collections/Soccer_match_event_dataset/4415000/2).
 
 
 Then, I suggest to use the codes in the following order:
