@@ -20,6 +20,6 @@ Then, I suggest to use the codes in the following order:
 
 * 01code_load_process_rawdata.R
 * 02code_feature_creation_exploratory_analysis.R
-* 03code_fit_models.R
+* 03code_fit_save_models.R
 * 04code_evaluate_use_models.R
 
