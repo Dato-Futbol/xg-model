@@ -24,7 +24,7 @@ Then, I suggest to use the codes in the following order:
 * 03code_fit_save_models.R
 * 04code_evaluate_use_models.R
 
-# TO DO List
+## TO DO List (14-05-2020)
 
 * Evaluate calibration of the models with Brier score following the method contained in [**this article**](https://dtai.cs.kuleuven.be/sports/blog/how-data-availability-affects-the-ability-to-learn-good-xg-models)
 
