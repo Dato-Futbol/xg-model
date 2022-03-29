@@ -3,22 +3,20 @@ get_shots <- function(file_path, name_detail, save_files = T){
         players <- fromJSON("players.json")
         
         shots <- fromJSON(file_path) %>%
-                filter(subEventName == "Shot")
+                 filter(subEventName == "Shot")
         
         tags <- tibble(tags = shots$tags) %>%
                 hoist(tags, 
                       tags_id = "id") %>%
-                unnest_wider(tags_id, names_sep = "") %>%
-                dplyr::select(-tags) %>%
-                rename_at(vars(contains(".")), funs(gsub("...", "_", ., fixed = TRUE)))
+                unnest_wider(tags_id, names_sep = "")
         
         tags2 <- tags %>%
-                mutate(is_goal = ifelse(rowSums(. == "101", na.rm = T) > 0, 1, 0),
-                       is_blocked = ifelse(rowSums(. == "2101", na.rm = T) > 0, 1, 0),
-                       is_CA = ifelse(rowSums(. == "1901", na.rm = T) > 0, 1, 0),
-                       body_part = ifelse(rowSums(. == "401", na.rm = T) > 0, "left", 
-                                          ifelse(rowSums(. == "402", na.rm = T) > 0, "right", 
-                                                 ifelse(rowSums(. == "403", na.rm = T) > 0, "head/body", "NA"))))
+                 mutate(is_goal = ifelse(rowSums(. == "101", na.rm = T) > 0, 1, 0),
+                        is_blocked = ifelse(rowSums(. == "2101", na.rm = T) > 0, 1, 0),
+                        is_CA = ifelse(rowSums(. == "1901", na.rm = T) > 0, 1, 0),
+                        body_part = ifelse(rowSums(. == "401", na.rm = T) > 0, "left", 
+                                           ifelse(rowSums(. == "402", na.rm = T) > 0, "right", 
+                                                  ifelse(rowSums(. == "403", na.rm = T) > 0, "head/body", "NA"))))
         
         pos <- tibble(positions = shots$positions) %>%
                 hoist(positions, 
@@ -26,9 +24,7 @@ get_shots <- function(file_path, name_detail, save_files = T){
                       x = "x") %>%
                 unnest_wider(y, names_sep = "") %>%
                 unnest_wider(x, names_sep = "") %>%
-                dplyr::select(-positions) %>%
-                rename_at(vars(contains(".")), funs(gsub("...", "_", ., fixed = TRUE))) %>%
-                dplyr::select(-c(x_2, y_2))
+                dplyr::select(-c(x2, y2))
         
         shots_ok <- shots %>%
                 dplyr::select(matchId, teamId, playerId, eventSec, matchPeriod) %>%
