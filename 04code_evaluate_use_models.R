@@ -107,7 +107,7 @@ ggsave("density_xg_plot.png", width = 10, height = 5)
 data_test_r <- as.data.frame(data_test)
 xx <- data_test_r %>% mutate(xG = pred_r_2$p1)
 
-ggplot(data = xx, aes(x= x_1, y = y_1)) + 
+ggplot(data = xx, aes(x= x1, y = y1)) + 
         annotate_pitch(colour = "white",
                        fill   = "black",
                        limits = FALSE) +
@@ -200,14 +200,14 @@ shotsB_AV <- AV_shots %>%
                time_prev = ifelse(is.na(time_prev), -1, time_prev),
                skilled_foot = ifelse(body_part == "head/body", body_part,
                                      ifelse(body_part == foot, "Yes", "No")),
-               x_meter = x_1 * 105/100,
-               y_meter = y_1 * 68/100,
+               x_meter = x1 * 105/100,
+               y_meter = y1 * 68/100,
                distance_to_goal_line = sqrt((105 - x_meter)^2 + (32.5 - y_meter)^2),
                angle_to_goal = atan( (7.32 * (105 - x_meter) ) / ( (105 - x_meter)^2 + (32.5 - y_meter)^2 - (7.32/2)^2 )) * 180/pi) %>%
         filter(!is.na(skilled_foot))
 
 data_to_mod_AV <- shotsB_AV %>%
-        dplyr::select(is_goal, eventSec, matchPeriod, x_1, y_1, is_CA, 
+        dplyr::select(is_goal, eventSec, matchPeriod, x1, y1, is_CA, 
                       time_prev, skilled_foot, distance_to_goal_line, angle_to_goal) %>%
         mutate(is_goal = factor(is_goal),
                matchPeriod = factor(matchPeriod),
@@ -235,7 +235,7 @@ tt3 <- ttheme_minimal(
                   fg_params=list(fontface=3, col = "white")),
         rowhead=list(fg_params=list(col="white", fontface=3L)))
 
-ggplot(data = AV_data, aes(y = y_1, x = x_1)) +
+ggplot(data = AV_data, aes(y = y1, x = x1)) +
         annotate_pitch(colour = "white",
                        fill   = "black",
                        limits = FALSE) +
