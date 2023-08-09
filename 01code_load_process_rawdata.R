@@ -20,7 +20,7 @@ write_rds(shots, "all_unblocked_shots.rds")
 
 
 # Viz 1: all unblocked shots
-ggplot(data = shots, aes(y = y_1, x = x_1)) +
+ggplot(data = shots, aes(y = y1, x = x1)) +
         annotate_pitch(colour = "white",
                        fill   = "black",
                        limits = FALSE) +
